@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "kind": "failure",
+  "repo_name": "leomed-toy",
+  "job_id": "9743268",
+  "state": "FAILED",
+  "created_at_utc": "2026-10-14T17:37:28+00:00",
+  "created_at_local": "2026-10-14T19:37:28+02:00",
+  "retry": {
+    "run_id": "9743268",
+    "run_branch": "leomed/run-9743268",
+    "attempt": 1,
+    "max_tries": 3,
+    "will_retry": true
+  },
+  "git": {
+    "commit": "a6f86efe18dca296afe79327da95d9174ca56928",
+    "subject": "toy project",
+    "remote": "origin",
+    "remote_url": "git@github-tunnel:Aurelien-Cormoreche/leomed-toy.git",
+    "dirty_at_submit": false
+  },
+  "slurm": {
+    "job_id": "9743268",
+    "state": "FAILED",
+    "exit_code": "1:0",
+    "derived_exit_code": "0:0",
+    "job_name": "job.sbatch",
+    "partition": "compute",
+    "account": "boeva",
+    "nodes": "compute-biomed-17",
+    "alloc_cpus": "1",
+    "alloc_tres": "billing=1,cpu=1,mem=1G,node=1",
+    "req_mem": "1Gn",
+    "max_rss": "100K",
+    "submit": "2026-10-14T19:36:58",
+    "start": "2026-10-14T19:36:58",
+    "end": "2026-10-14T19:37:00",
+    "elapsed": "00:00:02",
+    "timelimit": "00:05:00",
+    "reason": "None",
+    "steps": [
+      {
+        "JobID": "9743268",
+        "JobName": "job.sbatch",
+        "Partition": "compute",
+        "Account": "boeva",
+        "State": "FAILED",
+        "ExitCode": "1:0",
+        "DerivedExitCode": "0:0",
+        "Submit": "2026-10-14T19:36:58",
+        "Start": "2026-10-14T19:36:58",
+        "End": "2026-10-14T19:37:00",
+        "Elapsed": "00:00:02",
+        "Timelimit": "00:05:00",
+        "NodeList": "compute-biomed-17",
+        "AllocCPUS": "1",
+        "ReqMem": "1Gn",
+        "MaxRSS": "",
+        "AllocTRES": "billing=1,cpu=1,mem=1G,node=1",
+        "Reason": "None"
+      },
+      {
+        "JobID": "9743268.batch",
+        "JobName": "batch",
+        "Partition": "",
+        "Account": "boeva",
+        "State": "FAILED",
+        "ExitCode": "1:0",
+        "DerivedExitCode": "",
+        "Submit": "2026-10-14T19:36:58",
+        "Start": "2026-10-14T19:36:58",
+        "End": "2026-10-14T19:37:00",
+        "Elapsed": "00:00:02",
+        "Timelimit": "",
+        "NodeList": "compute-biomed-17",
+        "AllocCPUS": "1",
+        "ReqMem": "1Gn",
+        "MaxRSS": "0",
+        "AllocTRES": "cpu=1,mem=1G,node=1",
+        "Reason": ""
+      },
+      {
+        "JobID": "9743268.extern",
+        "JobName": "extern",
+        "Partition": "",
+        "Account": "boeva",
+        "State": "COMPLETED",
+        "ExitCode": "0:0",
+        "DerivedExitCode": "",
+        "Submit": "2026-10-14T19:36:58",
+        "Start": "2026-10-14T19:36:58",
+        "End": "2026-10-14T19:37:02",
+        "Elapsed": "00:00:04",
+        "Timelimit": "",
+        "NodeList": "compute-biomed-17",
+        "AllocCPUS": "1",
+        "ReqMem": "1Gn",
+        "MaxRSS": "100K",
+        "AllocTRES": "billing=1,cpu=1,mem=1G,node=1",
+        "Reason": ""
+      }
+    ]
+  },
+  "host": {
+    "login_node": "login-biomed-01",
+    "user": "acormoreche"
+  },
+  "hints": [
+    "The job script exited with code 1."
+  ],
+  "job_script": {
+    "path": "job.sbatch",
+    "content": "#!/bin/bash\n#SBATCH --time=00:05:00\n#SBATCH --mem=1G\n#SBATCH --cpus-per-task=1\n# Adapt if python3 is not on PATH on compute nodes (module load / conda activate).\npython3 train.py\n",
+    "sbatch_extra_args": [
+      "--account=boeva"
+    ]
+  },
+  "logs": {
+    "mode": "redacted",
+    "tail_lines": 200,
+    "out_path": "slurm_logs/9743268.out",
+    "err_path": "slurm_logs/9743268.err",
+    "out_exists": true,
+    "err_exists": true,
+    "out_truncated": false,
+    "err_truncated": false,
+    "out_tail": "",
+    "err_tail": "Traceback (most recent call last):\n  File \"train.py\", line 29, in <module>\n    w = train(make_data())\n  File \"train.py\", line 21, in train\n    grad = sum(2 * (w * x - y) * x for x, y in batch) / len(batch)\nZeroDivisionError: division by zero",
+    "traceback": "Traceback (most recent call last):\n  File \"train.py\", line 29, in <module>\n    w = train(make_data())\n  File \"train.py\", line 21, in train\n    grad = sum(2 * (w * x - y) * x for x, y in batch) / len(batch)\nZeroDivisionError: division by zero",
+    "redactions": 0
+  }
+}
